@@ -1,0 +1,264 @@
+/* Updated styles.css */
+
+/* Reset e configurações gerais */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Configurações de Header */
+#main-header {
+  background-color: rgb(0, 0, 0); /* ajuste a cor desejada */
+}
+.brand-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+a.text-decoration-none .brand-name {
+  color: white;
+}
+
+.nav-link {
+  color: black !important;
+}
+.cta {
+  border: 2px solid rgb(0, 0, 0); /* Remova o ":" entre solid e rgb(...) */
+  padding: 12px 30px;
+  margin-left: 16px;
+  border-radius: 25px;
+  background: rgb(0, 255, 106);
+  color: black !important;
+  transition: background 0.3s, color 0.3s;
+}
+.cta:hover {
+  background: rgb(253, 253, 253);
+  color: black !important;
+}
+
+/* Ícones sociais */
+.social-icons {
+  display: flex;
+  gap: 16px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.social-icons a {
+  color: blue;
+  font-size: 1.4rem;
+  transition: color 0.3s;
+}
+.social-icons a:hover {
+  color: #ffcc00;
+}
+
+/* Video background */
+.video-bg {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.video-bg video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+.overlay-text {
+  position: relative;
+  z-index: 2;
+}
+.overlay-text h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 8px rgb(0, 0, 0);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Seções adicionais */
+.portfolio img {
+  width: 100%;
+  border-radius: 8px;
+}
+.articles a {
+  color: #004080;
+  text-decoration: none;
+}
+
+/* Navbar Estilo */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* separa logo à esquerda e ícones/menu à direita */
+  align-items: center;
+  padding: 10px 30px;
+  background-color: rgb(88, 93, 146);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo-svg {
+  width: 120px;
+  height: auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Ícones de Redes Sociais (novamente, se necessário ajustar a repetição) */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-right: 130px;
+  z-index: 2;
+}
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s;
+}
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Menu Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  background-color: #3c5;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.dropbtn:hover {
+  background-color: #333;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #333;
+  min-width: 200px;
+  z-index: 1001;
+  border-radius: 20px;
+}
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color: #000;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Configurações do Mapa */
+.map-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  border: 3px solid #0af;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+#map-preview {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  max-width: 200px;
+  display: none;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+#map-preview img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Animação FadeIn */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Ajustes para Texto e Seções */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+h1, h2 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.video-bg {
+  position: relative;
+  overflow: hidden;
+}
+.video-bg::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 768px) {
+  /* Ajusta o container do cabeçalho para empilhar os elementos verticalmente */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /* Faz com que as seções esquerda e direita ocupem toda a largura e fiquem centralizadas */
+  .navbar-left,
+  .navbar-right {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Remove o posicionamento absoluto dos ícones sociais para que eles se posicionem naturalmente */
+  .social-icons {
+    position: static;
+    margin: 0 auto;
+  }
+
+  /* Reduz o tamanho da logo para que se ajuste melhor na tela */
+  .logo-svg {
+    width: 80px;
+  }
+}

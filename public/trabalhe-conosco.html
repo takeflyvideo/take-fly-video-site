@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trabalhe Conosco | Take Fly Video</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .hero {
+      background-image: url('assets/homem-drone.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 3rem;
+    }
+
+    .form-control, .form-select {
+      border-radius: 10px;
+      background-color: #f8f8f8;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: #999;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header dinâmico -->
+<div id="header-container"></div>
+
+<!-- Banner -->
+<section class="hero">
+  <h1>Trabalhe Conosco</h1>
+</section>
+
+<!-- Conteúdo principal -->
+<main class="container py-5">
+  <h4 class="mb-4">Estamos em busca de talentos apaixonados por drones e audiovisual.</h4>
+  <p class="mb-4">Preencha o formulário abaixo com seus dados e intenções. Avaliaremos seu perfil e entraremos em contato caso haja compatibilidade com nossas vagas.</p>
+
+  <form id="formTrabalheConosco">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="nascimento" class="form-label">Data de Nascimento</label>
+      <input type="date" class="form-control" id="nascimento" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="tel" class="form-control" id="telefone" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="equipamentos" class="form-label">Possui algum dos seguintes equipamentos?</label>
+      <select id="equipamentos" class="form-select">
+        <option>Drone DJI Mavic</option>
+        <option>Drone Phantom</option>
+        <option>Câmera 4K</option>
+        <option>Estabilizador / Gimbal</option>
+        <option>Nenhum equipamento</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="mensagem" class="form-label">Fale um pouco sobre você, sua experiência ou intenção</label>
+      <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Enviar Solicitação</button>
+  </form>
+
+  <div class="mt-4 text-center">
+    <p>Você também pode entrar em contato diretamente:</p>
+    <a id="whatsappBtn" href="#" class="btn btn-success mx-2">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <a id="emailBtn" href="#" class="btn btn-primary mx-2">
+      <i class="fas fa-envelope"></i> E-mail
+    </a>
+  </div>
+</main>
+
+<!-- Footer dinâmico -->
+<div id="footer-container"></div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+  // Carrega header e footer
+  fetch('header.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('header-container').innerHTML = data);
+
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-container').innerHTML = data);
+
+  // Botões de envio
+  document.getElementById('whatsappBtn').addEventListener('click', () => {
+    const nome = document.getElementById('nome').value;
+    const nascimento = document.getElementById('nascimento').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const equipamentos = document.getElementById('equipamentos').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    const texto = `Candidato(a): ${nome}\nNascimento: ${nascimento}\nEmail: ${email}\nTelefone: ${telefone}\nEquipamentos: ${equipamentos}\nSobre mim:\n${mensagem}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+  });
+
+  document.getElementById('emailBtn').addEventListener('click', () => {
+    const nome = document.getElementById('nome').value;
+    const nascimento = document.getElementById('nascimento').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const equipamentos = document.getElementById('equipamentos').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    const corpo = `Candidato(a): ${nome}\nNascimento: ${nascimento}\nEmail: ${email}\nTelefone: ${telefone}\nEquipamentos: ${equipamentos}\nSobre mim:\n${mensagem}`;
+    window.location.href = `mailto:contato@takeflyvideo.com?subject=Candidatura - Trabalhe Conosco&body=${encodeURIComponent(corpo)}`;
+  });
+</script>
+
+</body>
+</html>
