@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       name: "Centro do Rio",
       coords: [-22.9068, -43.1729],
-      image: "assets/images/centro-rio.jpg"
+      image: "assets/images/central-do-brasil.jpg"
     }
   ];
 
